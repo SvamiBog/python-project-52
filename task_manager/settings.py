@@ -29,8 +29,8 @@ ALLOWED_HOSTS = [
     "webserver",
     '127.0.0.1',
     '0.0.0.0',
-    '.railway.app',
     'localhost',
+    'your-app.onrender.com'
 ]
 
 
