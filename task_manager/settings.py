@@ -30,7 +30,7 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     '0.0.0.0',
     'localhost',
-    'your-app.onrender.com'
+    'python-project-52-37sg.onrender.com',
 ]
 
 
