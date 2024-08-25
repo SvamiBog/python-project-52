@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load django_bootstrap5 %}
+    {% load i18n %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <title>
+        {% block title %}
+        {% trans 'Task manager Hexlet' %}
+        {% endblock %}
+    </title>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <header class="masthead">
+        {% include 'navbar.html' %}
+    </header>
+    <div class="container">
+        {% bootstrap_messages %}
+        {% block content %}
+        {% endblock %}
+    </div>
+    {% include "footer.html" %}    
+</body>
+</html>
