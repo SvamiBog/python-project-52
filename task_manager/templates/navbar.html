@@ -14,23 +14,23 @@
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <a class="nav-link{% if request.resolver_match.view_name == 'users_index' %} active{% endif %}"
-                 href="">{% trans "Users" %}</a>
+                 href="{% url 'users_index' %}">{% trans "Users" %}</a>
             </li>
             {% if user.is_authenticated %}
             <li class="nav-item">
               <a class="nav-link{% if request.resolver_match.view_name == 'statuses' %} active{% endif %}"
-                 href="{% url 'status_index' %}">{% trans "Statuses" %}</a>
+                 href="">{% trans "Statuses" %}</a>
             </li>
             <li class="nav-item">
               <a class="nav-link{% if request.resolver_match.view_name == 'labels' %} active{% endif %}"
-                 href="{% url 'labels_index' %}">{% trans "Labels" %}</a>
+                 href="">{% trans "Labels" %}</a>
             </li>
             <li class="nav-item">
               <a class="nav-link{% if request.resolver_match.view_name == 'tasks' %} active{% endif %}"
-                 href="{% url 'task_index' %}">{% trans "Tasks" %}</a>
+                 href="">{% trans "Tasks" %}</a>
             </li>
             <li>
-              <form action="{% url 'logout' %}" method="post">
+              <form action="" method="post">
                 {% csrf_token %}
                 <input class="btn nav-link" type="submit" value="{% trans 'Logout' %}">
               </form>
@@ -38,11 +38,11 @@
             {% else %}
             <li class="nav-item">
               <a class="nav-link{% if request.resolver_match.view_name == 'login' %} active{% endif %}"
-                 href="">{% trans "Authorization" %}</a>
+                 href="{% url 'login' %}">{% trans "Login" %}</a>
             </li>
             <li class="nav-item">
               <a class="nav-link{% if request.resolver_match.view_name == 'users_create' %} active{% endif %}"
-                 href="">{% trans "Registration" %}</a>
+                 href="{% url 'users_create' %}">{% trans "Registration" %}</a>
             </li>
             {% endif %}
           </ul>
