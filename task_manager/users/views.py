@@ -4,7 +4,8 @@ from django.contrib.auth import get_user_model
 from django.views.generic.list import ListView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from task_manager.mixins import AuthRequiredMixin, UserPermissionMixin, DeleteProtectionMixin
+from task_manager.mixins import (
+    AuthRequiredMixin, UserPermissionMixin, DeleteProtectionMixin)
 from .forms import UserCreateForm, UserUpdateForm
 
 
@@ -25,18 +26,23 @@ class UserCreateView(CreateView, SuccessMessageMixin):
     success_url = reverse_lazy('login')
     extra_context = {
         'title': _('Registration'),
-        'button_text': _('Register')           
+        'button_text': _('Register')
         }
 
 
-class UserUpdateView(AuthRequiredMixin, UserPermissionMixin, SuccessMessageMixin, UpdateView):
+class UserUpdateView(
+        AuthRequiredMixin,
+        UserPermissionMixin,
+        SuccessMessageMixin,
+        UpdateView):
     permission_denied_url = reverse_lazy('user_index')
     login_url = reverse_lazy('login')
     model = User
     form_class = UserUpdateForm
     template_name = 'form.html'
     success_message = _('User successfully updated')
-    permission_denied_message = _('You don\'t have rights to update other users.')
+    permission_denied_message = _(
+        'You don\'t have rights to update other users.')
     success_url = reverse_lazy('users_index')
     extra_context = {
         'title': _('Updating user'),
@@ -44,8 +50,13 @@ class UserUpdateView(AuthRequiredMixin, UserPermissionMixin, SuccessMessageMixin
     }
 
 
-class UserDeleteView(DeleteView, DeleteProtectionMixin, AuthRequiredMixin, UserPermissionMixin):
-    protected_message = _('It is not possible to delete a user because it is being used')
+class UserDeleteView(
+        DeleteView,
+        DeleteProtectionMixin,
+        AuthRequiredMixin,
+        UserPermissionMixin):
+    protected_message = _(
+        'It is not possible to delete a user because it is being used')
     protected_url = reverse_lazy('users_index')
     login_url = reverse_lazy('login')
     success_message = _('User successfully deleted')
@@ -58,4 +69,5 @@ class UserDeleteView(DeleteView, DeleteProtectionMixin, AuthRequiredMixin, UserP
         'button_text': _('Yes, delete')
     }
     permission_denied_url = reverse_lazy('users_index')
-    permission_denied_message = _('You don\'t have rights to update other users.')
+    permission_denied_message = _(
+        'You don\'t have rights to update other users.')

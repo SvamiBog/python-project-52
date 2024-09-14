@@ -27,7 +27,7 @@ class UserUpdateForm(UserCreateForm):
             'password1',
             'password2'
         ]
-    
+
     def clean_username(self):
         if (
             self.get_initial_for_field(

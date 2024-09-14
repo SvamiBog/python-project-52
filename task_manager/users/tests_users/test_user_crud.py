@@ -40,7 +40,8 @@ class UserCRUDTests(TestCase):
             'password1': 'UpdatedPass123',
             'password2': 'UpdatedPass123',
         }
-        response = self.client.post(reverse('users_update', args=[self.user.id]), updated_data)
+        response = self.client.post(
+            reverse('users_update', args=[self.user.id]), updated_data)
         self.assertEqual(response.status_code, 302)
         self.user.refresh_from_db()
         self.assertEqual(self.user.username, 'updateduser')
@@ -50,6 +51,7 @@ class UserCRUDTests(TestCase):
     def test_user_delete(self):
         # Тест удаления пользователя.
         self.client.force_login(self.user)
-        response = self.client.post(reverse('users_delete', args=[self.user.id]))
+        response = self.client.post(
+            reverse('users_delete', args=[self.user.id]))
         self.assertEqual(response.status_code, 302)
         self.assertFalse(User.objects.filter(username='testuser').exists())

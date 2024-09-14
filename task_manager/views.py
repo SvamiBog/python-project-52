@@ -14,7 +14,7 @@ class IndexView(TemplateView):
         'text': _('Practical programming courses'),
         'button_text': _('Learn more')
         }
-    
+
 
 class UserLoginView(SuccessMessageMixin, LoginView):
     template_name = 'form.html'
@@ -28,7 +28,6 @@ class UserLoginView(SuccessMessageMixin, LoginView):
 
 class UserLogoutView(LogoutView):
     next_page = reverse_lazy('index')
-
 
     def dispatch(self, request, *args, **kwargs):
         messages.add_message(request, messages.INFO, _('You are logged out'))
