@@ -6,14 +6,16 @@ User = get_user_model()
 
 
 class UserCreateForm(UserCreationForm):
-    class Meta(UserCreationForm.Meta):
+    usable_password = None
+
+    class Meta:
         model = User
         fields = [
             'first_name',
             'last_name',
             'username',
             'password1',
-            'password2'
+            'password2',
         ]
 
 
@@ -25,7 +27,7 @@ class UserUpdateForm(UserCreateForm):
             'last_name',
             'username',
             'password1',
-            'password2'
+            'password2',
         ]
 
     def clean_username(self):
