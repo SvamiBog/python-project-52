@@ -30,7 +30,7 @@
                  href="">{% trans "Tasks" %}</a>
             </li>
             <li>
-              <form action="" method="post">
+              <form action="{% url 'logout' %}" method="post">
                 {% csrf_token %}
                 <input class="btn nav-link" type="submit" value="{% trans 'Logout' %}">
               </form>

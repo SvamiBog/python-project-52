@@ -6,7 +6,7 @@
     {{ title }} | {% trans 'Task Manager' %}
 {% endblock %}
 
-{% block context %}
+{% block content %}
     <h1 class="my-4 text-left">{{ title }}</h1>
     <form class="text-left" method="post">
         {% csrf_token %}

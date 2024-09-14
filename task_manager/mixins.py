@@ -14,19 +14,19 @@ class AuthRequiredMixin(LoginRequiredMixin):
             messages.error(request, self.auth_message)
             return redirect(reverse_lazy('login'))
         return super().dispatch(request, *args, **kwargs)
-    
+
 
 class UserPermissionMixin(UserPassesTestMixin):
     permission_denied_url = None
 
     def test_func(self):
-        return super().request.user == self.get_object()
-    
+        return self.request.user == self.get_object()
+
 
     def handle_no_permission(self):
         messages.error(self.request, self.permission_denied_message)
         return redirect(self.permission_denied_url)
-    
+
 
 class DeleteProtectionMixin:
     protected_message = None
@@ -38,8 +38,8 @@ class DeleteProtectionMixin:
         except ProtectedError:
             messages.error(request, self.protected_message)
             return redirect(self.protected_url)
-        
+
 
 class AuthorPermissionMixin(UserPermissionMixin):
     def test_func(self):
-        return self.get_object().author == self.requst.user
+        return self.get_object().author == self.request.user
