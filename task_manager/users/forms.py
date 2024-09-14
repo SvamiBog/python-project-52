@@ -6,9 +6,7 @@ User = get_user_model()
 
 
 class UserCreateForm(UserCreationForm):
-    usable_password = None
-
-    class Meta:
+    class Meta(UserCreationForm.Meta):
         model = User
         fields = [
             'first_name',
@@ -20,7 +18,7 @@ class UserCreateForm(UserCreationForm):
 
 
 class UserUpdateForm(UserCreateForm):
-    class Meta:
+    class Meta(UserCreateForm.Meta):
         model = User
         fields = [
             'first_name',
