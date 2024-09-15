@@ -34,6 +34,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+CSRF_TRUSTED_ORIGINS = ['https://python-project-52-production-a013.up.railway.app']
+
 
 # Application definition
 
