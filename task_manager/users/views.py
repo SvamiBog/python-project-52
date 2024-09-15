@@ -4,8 +4,7 @@ from django.contrib.auth import get_user_model
 from django.views.generic.list import ListView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from task_manager.mixins import (
-    AuthRequiredMixin, UserPermissionMixin, DeleteProtectionMixin)
+from task_manager.mixins import AuthRequiredMixin, UserPermissionMixin, DeleteProtectionMixin
 from .forms import UserCreateForm, UserUpdateForm
 
 
@@ -19,15 +18,15 @@ class UserIndexView(ListView):
     ordering = ['pk']
 
 
-class UserCreateView(CreateView, SuccessMessageMixin):
+class UserCreateView(SuccessMessageMixin, CreateView):
     form_class = UserCreateForm
     template_name = 'form.html'
     success_message = _('User successfully created')
     success_url = reverse_lazy('login')
     extra_context = {
         'title': _('Registration'),
-        'button_text': _('Register')
-        }
+        'button_text': _('Registration')
+    }
 
 
 class UserUpdateView(
@@ -35,7 +34,7 @@ class UserUpdateView(
         UserPermissionMixin,
         SuccessMessageMixin,
         UpdateView):
-    permission_denied_url = reverse_lazy('user_index')
+    permission_denied_url = reverse_lazy('users_index')
     login_url = reverse_lazy('login')
     model = User
     form_class = UserUpdateForm
@@ -51,10 +50,11 @@ class UserUpdateView(
 
 
 class UserDeleteView(
-        DeleteView,
-        DeleteProtectionMixin,
         AuthRequiredMixin,
-        UserPermissionMixin):
+        UserPermissionMixin,
+        DeleteProtectionMixin,
+        DeleteView,
+        SuccessMessageMixin):
     protected_message = _(
         'It is not possible to delete a user because it is being used')
     protected_url = reverse_lazy('users_index')

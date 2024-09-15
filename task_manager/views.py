@@ -20,8 +20,10 @@ class UserLoginView(SuccessMessageMixin, LoginView):
     template_name = 'form.html'
     authentication_form = AuthenticationForm
     next_page = reverse_lazy('index')
-    extra_context = {'title': _('Authorization'),
-                     'button_text': _('Login')}
+    extra_context = {
+        'title': _('Authorization'),
+        'button_text': _('Login')
+    }
 
     success_message = _('You are Logged in')
 
