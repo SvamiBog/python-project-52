@@ -4,7 +4,10 @@ from django.contrib.auth import get_user_model
 from django.views.generic.list import ListView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from task_manager.mixins import AuthRequiredMixin, UserPermissionMixin, DeleteProtectionMixin
+from task_manager.mixins import (
+    AuthRequiredMixin,
+    UserPermissionMixin,
+    DeleteProtectionMixin)
 from .forms import UserCreateForm, UserUpdateForm
 
 

@@ -34,7 +34,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = ['https://python-project-52-production-a013.up.railway.app']
+CSRF_TRUSTED_ORIGINS = \
+    ['https://python-project-52-production-a013.up.railway.app']
 
 
 # Application definition
@@ -46,11 +47,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'task_manager',
     'django_bootstrap5',
     'django_extensions',
     'django_filters',
+    'task_manager',
     'task_manager.users.apps.UsersConfig',
+    'task_manager.statuses',
 ]
 
 MIDDLEWARE = [
