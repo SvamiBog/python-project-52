@@ -168,7 +168,7 @@ msgstr "Задание"
 #: task_manager/templates/navbar.html:30
 #: task_manager/templates/tasks/task_index.html:7
 msgid "Tasks"
-msgstr "Задания"
+msgstr "Задачи"
 
 #: task_manager/tasks/views.py:23
 msgid "Show"
@@ -241,7 +241,7 @@ msgstr "Дата создания"
 #: task_manager/templates/tasks/task_index.html:42
 #: task_manager/templates/users/index.html:25
 msgid "Edit"
-msgstr "Редактировать"
+msgstr "Изменить"
 
 #: task_manager/templates/navbar.html:17
 #: task_manager/templates/users/index.html:7
@@ -250,7 +250,7 @@ msgstr "Пользователи"
 
 #: task_manager/templates/navbar.html:35
 msgid "Logout"
-msgstr "Выйти"
+msgstr "Выход"
 
 #: task_manager/templates/navbar.html:41
 msgid "Sign in"
