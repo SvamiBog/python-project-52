@@ -77,7 +77,7 @@ msgstr "Успешное удаление метки"
 
 #: task_manager/labels/views.py:46
 msgid "You are not allowed to delete this label"
-msgstr "Вы не можете удалить эту метку"
+msgstr "Невозможно удалить метку, потому что она используется"
 
 #: task_manager/labels/views.py:49
 msgid "Delete label"
@@ -130,7 +130,7 @@ msgstr "Статус успешно удален"
 
 #: task_manager/statuses/views.py:55
 msgid "You are not allowed to delete this status."
-msgstr "Вы не можете удалить этот статус."
+msgstr "Невозможно удалить статус, потому что он используется"
 
 #: task_manager/statuses/views.py:58
 msgid "Delete Status"
@@ -291,7 +291,7 @@ msgstr "фамилия"
 
 #: task_manager/users/views.py:27
 msgid "User successfully created"
-msgstr "Пользователь успешно создан"
+msgstr "Пользователь успешно зарегистрирован"
 
 #: task_manager/users/views.py:31
 msgid "Register"

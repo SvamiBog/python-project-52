@@ -2,7 +2,7 @@ from .models import Task
 from django.utils.translation import gettext_lazy as _
 from django.urls import reverse_lazy
 from django_filters.views import FilterView
-from task_manager.mixins import AuthRequiredMixin, AuthorPermissionMixin
+from task_manager.mixins import AuthRequiredMixin, AuthorPermissionMixin, DeleteProtectionMixin
 from django.views.generic import CreateView, UpdateView, DeleteView, DetailView
 from django.contrib.messages.views import SuccessMessageMixin
 from .filters import TaskFilter
@@ -56,6 +56,7 @@ class TasksUpdateView(AuthRequiredMixin, SuccessMessageMixin, UpdateView):
 
 class TasksDeleteView(
     AuthRequiredMixin,
+    DeleteProtectionMixin,
     AuthorPermissionMixin,
     SuccessMessageMixin,
     DeleteView

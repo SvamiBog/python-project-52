@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from task_manager.labels.models import Label
-from task_manager.mixins import AuthRequiredMixin
+from task_manager.mixins import AuthRequiredMixin, DeleteProtectionMixin
 from .forms import LabelForm
 
 
@@ -38,7 +38,12 @@ class LabelUpdateView(AuthRequiredMixin, SuccessMessageMixin, UpdateView):
     }
 
 
-class LabelDeleteView(AuthRequiredMixin, SuccessMessageMixin, DeleteView):
+class LabelDeleteView(
+    AuthRequiredMixin,
+    DeleteProtectionMixin,
+    SuccessMessageMixin,
+    DeleteView
+):
     model = Label
     template_name = 'labels/labels_delete.html'
     success_url = reverse_lazy('labels_index')
