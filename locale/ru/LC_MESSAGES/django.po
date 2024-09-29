@@ -110,7 +110,7 @@ msgstr "Статусы"
 
 #: task_manager/statuses/views.py:24
 msgid "Your status has been created."
-msgstr "Ваш статус был создан."
+msgstr "Статус успешно создан"
 
 #: task_manager/statuses/views.py:27
 msgid "Create Status"
@@ -126,7 +126,7 @@ msgstr "Обновление статуса"
 
 #: task_manager/statuses/views.py:54
 msgid "Your status has been deleted."
-msgstr "Ваш статус был удален."
+msgstr "Статус успешно удален"
 
 #: task_manager/statuses/views.py:55
 msgid "You are not allowed to delete this status."
@@ -134,7 +134,7 @@ msgstr "Вы не можете удалить этот статус."
 
 #: task_manager/statuses/views.py:58
 msgid "Delete Status"
-msgstr "Удаить статус"
+msgstr "Удаление статуса"
 
 #: task_manager/tasks/filters.py:18
 msgid "Only own tasks"
@@ -344,8 +344,8 @@ msgstr "Войти"
 
 #: task_manager/views.py:28
 msgid "You are Logged in"
-msgstr "Вы вошли в систему"
+msgstr "Вы залогинены"
 
 #: task_manager/views.py:35
 msgid "You are logged out"
-msgstr "Вы вышли из системы"
+msgstr "Вы разлогинены"
