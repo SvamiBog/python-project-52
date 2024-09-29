@@ -56,8 +56,9 @@ class UserDeleteView(
         AuthRequiredMixin,
         UserPermissionMixin,
         DeleteProtectionMixin,
-        DeleteView,
-        SuccessMessageMixin):
+        SuccessMessageMixin,
+        DeleteView
+):
     protected_message = _(
         'It is not possible to delete a user because it is being used')
     protected_url = reverse_lazy('users_index')
