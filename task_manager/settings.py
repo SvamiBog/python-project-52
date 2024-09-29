@@ -15,6 +15,9 @@ from pathlib import Path
 from dotenv import load_dotenv
 import dj_database_url
 from django.urls import reverse_lazy
+import logging
+import rollbar
+
 
 
 load_dotenv()
@@ -139,6 +142,9 @@ ROLLBAR = {
     'code_version': '1.0',
     'root': str(BASE_DIR),
 }
+
+
+logging.getLogger('rollbar').setLevel(logging.ERROR)
 
 
 # Internationalization
