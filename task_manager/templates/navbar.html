@@ -38,7 +38,7 @@
             {% else %}
             <li class="nav-item">
               <a class="nav-link{% if request.resolver_match.view_name == 'login' %} active{% endif %}"
-                 href="{% url 'login' %}">{% trans "Login" %}</a>
+                 href="{% url 'login' %}">{% trans "Sign in" %}</a>
             </li>
             <li class="nav-item">
               <a class="nav-link{% if request.resolver_match.view_name == 'users_create' %} active{% endif %}"

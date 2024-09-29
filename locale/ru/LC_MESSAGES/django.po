@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-29 14:24+0200\n"
+"POT-Creation-Date: 2024-09-29 22:37+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -52,7 +52,7 @@ msgid "Create new label"
 msgstr "Создать новую метку"
 
 #: task_manager/labels/views.py:25 task_manager/statuses/views.py:28
-#: task_manager/tasks/views.py:34
+#: task_manager/tasks/views.py:36
 msgid "Create"
 msgstr "Создать"
 
@@ -65,7 +65,7 @@ msgid "Update label"
 msgstr "Обновить метку"
 
 #: task_manager/labels/views.py:37 task_manager/statuses/views.py:40
-#: task_manager/tasks/views.py:50
+#: task_manager/tasks/views.py:53
 #: task_manager/templates/tasks/task_details.html:57
 #: task_manager/users/views.py:51
 msgid "Update"
@@ -84,7 +84,7 @@ msgid "Delete label"
 msgstr "Удалить метку"
 
 #: task_manager/labels/views.py:50 task_manager/statuses/views.py:59
-#: task_manager/tasks/views.py:63
+#: task_manager/tasks/views.py:71
 #: task_manager/templates/labels/labels_index.html:29
 #: task_manager/templates/statuses/index.html:34
 #: task_manager/templates/tasks/task_details.html:59
@@ -164,45 +164,45 @@ msgstr "Исполнитель"
 msgid "Task"
 msgstr "Задание"
 
-#: task_manager/tasks/models.py:56 task_manager/tasks/views.py:21
+#: task_manager/tasks/models.py:56 task_manager/tasks/views.py:22
 #: task_manager/templates/navbar.html:30
 #: task_manager/templates/tasks/task_index.html:7
 msgid "Tasks"
 msgstr "Задания"
 
-#: task_manager/tasks/views.py:22
+#: task_manager/tasks/views.py:23
 msgid "Show"
 msgstr "Показать"
 
-#: task_manager/tasks/views.py:31
+#: task_manager/tasks/views.py:33
 msgid "Task added"
 msgstr "Задание добавлено"
 
-#: task_manager/tasks/views.py:33
+#: task_manager/tasks/views.py:35
 msgid "Create task"
 msgstr "Создать задание"
 
-#: task_manager/tasks/views.py:46
+#: task_manager/tasks/views.py:49
 msgid "Task updated"
 msgstr "Задание обновлено"
 
-#: task_manager/tasks/views.py:49
+#: task_manager/tasks/views.py:52
 msgid "Update task"
 msgstr "Задание на обновление"
 
-#: task_manager/tasks/views.py:57
+#: task_manager/tasks/views.py:65
 msgid "Task deleted"
 msgstr "Задание удалено"
 
-#: task_manager/tasks/views.py:59
+#: task_manager/tasks/views.py:67
 msgid "The task can be deleted only by its author"
 msgstr "Задание может быть удалено только его автором"
 
-#: task_manager/tasks/views.py:62
+#: task_manager/tasks/views.py:70
 msgid "Delete task"
 msgstr "Удалить задание"
 
-#: task_manager/tasks/views.py:71
+#: task_manager/tasks/views.py:79
 msgid "Detail task"
 msgstr "Детали задачи"
 
@@ -252,8 +252,8 @@ msgstr "Пользователи"
 msgid "Logout"
 msgstr "Выйти"
 
-#: task_manager/templates/navbar.html:41 task_manager/views.py:25
-msgid "Login"
+#: task_manager/templates/navbar.html:41
+msgid "Sign in"
 msgstr "Вход"
 
 #: task_manager/templates/navbar.html:45 task_manager/users/views.py:30
@@ -337,6 +337,10 @@ msgstr "Узнать больше"
 #: task_manager/views.py:24
 msgid "Authorization"
 msgstr "Авторизация"
+
+#: task_manager/views.py:25
+msgid "Login"
+msgstr "Войти"
 
 #: task_manager/views.py:28
 msgid "You are Logged in"
