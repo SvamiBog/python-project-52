@@ -5,6 +5,8 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.forms import AuthenticationForm
 from django.urls import reverse_lazy
 from django.contrib import messages
+from django.shortcuts import render
+from django.http import HttpResponse
 
 
 class IndexView(TemplateView):
