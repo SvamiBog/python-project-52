@@ -12,6 +12,9 @@ class StatusIndexView(AuthRequiredMixin, ListView):
     template_name = 'statuses/index.html'
     context_object_name = 'statuses'
     ordering = ["pk"]
+    extra_context = {
+        'title': _('Statuses')
+    }
 
 
 class StatusCreateView(AuthRequiredMixin, SuccessMessageMixin, CreateView):
