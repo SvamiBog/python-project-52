@@ -56,7 +56,6 @@ class TasksUpdateView(AuthRequiredMixin, SuccessMessageMixin, UpdateView):
 
 class TasksDeleteView(
     AuthRequiredMixin,
-    DeleteProtectionMixin,
     AuthorPermissionMixin,
     SuccessMessageMixin,
     DeleteView
@@ -67,11 +66,14 @@ class TasksDeleteView(
     template_name = 'tasks/task_delete.html'
     author_message = _('The task can be deleted only by its author')
     author_url = reverse_lazy('tasks_index')
+    permission_denied_url = reverse_lazy("task_index")
+    permission_denied_message = _("Only the author of the task can delete it")
     extra_context = {
         "title": _("Delete task"),
         'text': _('Are you sure you want to delete'),
         "button_text": _('Yes, delete'),
     }
+
 
 
 class TasksDetailView(AuthRequiredMixin, DetailView):
