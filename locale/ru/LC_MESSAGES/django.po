@@ -49,7 +49,7 @@ msgstr "Метка успешно создана"
 
 #: task_manager/labels/views.py:24
 msgid "Create new label"
-msgstr "Создать новую метку"
+msgstr "Создать метку"
 
 #: task_manager/labels/views.py:25 task_manager/statuses/views.py:28
 #: task_manager/tasks/views.py:36
@@ -180,7 +180,7 @@ msgstr "Задание добавлено"
 
 #: task_manager/tasks/views.py:35
 msgid "Create task"
-msgstr "Создать задание"
+msgstr "Создать задачу"
 
 #: task_manager/tasks/views.py:49
 msgid "Task updated"
