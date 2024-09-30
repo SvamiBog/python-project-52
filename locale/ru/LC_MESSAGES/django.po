@@ -176,7 +176,7 @@ msgstr "Показать"
 
 #: task_manager/tasks/views.py:33
 msgid "Task added"
-msgstr "Задание добавлено"
+msgstr "Задача успешно создана"
 
 #: task_manager/tasks/views.py:35
 msgid "Create task"
