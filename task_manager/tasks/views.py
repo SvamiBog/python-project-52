@@ -75,7 +75,6 @@ class TasksDeleteView(
     }
 
 
-
 class TasksDetailView(AuthRequiredMixin, DetailView):
     model = Task
     template_name = 'tasks/task_details.html'

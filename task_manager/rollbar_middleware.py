@@ -1,10 +1,10 @@
 from rollbar.contrib.django.middleware import RollbarNotifierMiddleware
 
+
 class CustomRollbarNotifierMiddleware(RollbarNotifierMiddleware):
     def get_extra_data(self, request, exc):
         extra_data = dict()
 
-        # Пример добавления произвольных метаданных
         extra_data = {
             'trace_id': 'aabbccddeeff',
             'feature_flags': [
@@ -19,7 +19,6 @@ class CustomRollbarNotifierMiddleware(RollbarNotifierMiddleware):
         payload_data = dict()
 
         if not request.user.is_anonymous:
-            # Добавление информации о пользователе, который столкнулся с ошибкой
             payload_data = {
                 'person': {
                     'id': request.user.id,

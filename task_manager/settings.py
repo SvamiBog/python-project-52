@@ -16,8 +16,6 @@ from dotenv import load_dotenv
 import dj_database_url
 from django.urls import reverse_lazy
 import logging
-import rollbar
-
 
 
 load_dotenv()

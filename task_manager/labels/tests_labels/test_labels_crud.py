@@ -5,10 +5,14 @@ from task_manager.labels.models import Label
 
 User = get_user_model()
 
+
 class LabelsCRUDTests(TestCase):
     def setUp(self):
         # Создание тестового пользователя и метки
-        self.user = User.objects.create_user(username="testuser", password="password123")
+        self.user = User.objects.create_user(
+            username="testuser",
+            password="password123"
+        )
         self.label = Label.objects.create(name="Test Label")
 
         # Аутентификация пользователя
@@ -30,15 +34,23 @@ class LabelsCRUDTests(TestCase):
 
     def test_label_update(self):
         """Тест обновления метки."""
-        response = self.client.post(reverse('label_update', args=[self.label.id]), {
-            'name': 'Updated Label'
-        })
-        self.assertEqual(response.status_code, 302)  # редирект после обновления
+        response = self.client.post(reverse(
+            'label_update',
+            args=[self.label.id]
+        ),
+            {'name': 'Updated Label'}
+        )
+        self.assertEqual(response.status_code, 302)
         self.label.refresh_from_db()
         self.assertEqual(self.label.name, 'Updated Label')
 
     def test_label_delete(self):
         """Тест удаления метки."""
-        response = self.client.post(reverse('label_delete', args=[self.label.id]))
-        self.assertEqual(response.status_code, 302)  # редирект после удаления
+        response = self.client.post(
+            reverse(
+                'label_delete',
+                args=[self.label.id]
+            )
+        )
+        self.assertEqual(response.status_code, 302)
         self.assertFalse(Label.objects.filter(id=self.label.id).exists())

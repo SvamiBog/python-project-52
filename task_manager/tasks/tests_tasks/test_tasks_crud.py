@@ -6,6 +6,7 @@ from task_manager.tasks.models import Task
 
 User = get_user_model()
 
+
 class TasksCRUDTests(TestCase):
 
     def setUp(self):
@@ -50,32 +51,49 @@ class TasksCRUDTests(TestCase):
             'status': self.status.id,
             'executor': self.other_user.id
         })
-        self.assertEqual(response.status_code, 302)  # Check for successful redirect after creation
-        self.assertEqual(Task.objects.count(), 2)  # There should be 2 tasks in total
-        self.assertTrue(Task.objects.filter(name='New Task').exists())  # Verify the new task was created
+        # Check for successful redirect after creation
+        self.assertEqual(response.status_code, 302)
+        # There should be 2 tasks in total
+        self.assertEqual(Task.objects.count(), 2)
+        # Verify the new task was created
+        self.assertTrue(Task.objects.filter(name='New Task').exists())
 
     def test_task_read(self):
         """Test displaying a task's details."""
         response = self.client.get(reverse('task_detail', args=[self.task.id]))
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'Test Task')  # Check that the task's name is displayed
-        self.assertContains(response, 'Test Description')  # Check that the task's description is displayed
+        # Check that the task's name is displayed
+        self.assertContains(response, 'Test Task')
+        # Check that the task's description is displayed
+        self.assertContains(response, 'Test Description')
 
     def test_task_update(self):
         """Test updating an existing task."""
-        response = self.client.post(reverse('task_update', args=[self.task.id]), {
+        response = self.client.post(reverse(
+            'task_update',
+            args=[self.task.id]
+        ), {
             'name': 'Updated Task',
             'description': 'Updated Description',
             'status': self.status.id,
             'executor': self.other_user.id
         })
-        self.assertEqual(response.status_code, 302)  # Check for successful redirect after update
-        self.task.refresh_from_db()  # Refresh task data from the database
-        self.assertEqual(self.task.name, 'Updated Task')  # Verify the task name was updated
-        self.assertEqual(self.task.description, 'Updated Description')  # Verify the task description was updated
+        # Check for successful redirect after update
+        self.assertEqual(response.status_code, 302)
+        # Refresh task data from the database
+        self.task.refresh_from_db()
+        # Verify the task name was updated
+        self.assertEqual(self.task.name, 'Updated Task')
+        # Verify the task description was updated
+        self.assertEqual(self.task.description, 'Updated Description')
 
     def test_task_delete(self):
         """Test deleting a task."""
-        response = self.client.post(reverse('task_delete', args=[self.task.id]))
-        self.assertEqual(response.status_code, 302)  # Check for successful redirect after deletion
-        self.assertFalse(Task.objects.filter(id=self.task.id).exists())  # Verify the task no longer exists
+        response = self.client.post(reverse(
+            'task_delete',
+            args=[self.task.id]
+        ))
+        # Check for successful redirect after deletion
+        self.assertEqual(response.status_code, 302)
+        # Verify the task no longer exists
+        self.assertFalse(Task.objects.filter(id=self.task.id).exists())
