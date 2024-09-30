@@ -2,7 +2,7 @@ from .models import Task
 from django.utils.translation import gettext_lazy as _
 from django.urls import reverse_lazy
 from django_filters.views import FilterView
-from task_manager.mixins import AuthRequiredMixin, AuthorPermissionMixin, DeleteProtectionMixin
+from task_manager.mixins import AuthRequiredMixin, AuthorPermissionMixin
 from django.views.generic import CreateView, UpdateView, DeleteView, DetailView
 from django.contrib.messages.views import SuccessMessageMixin
 from .filters import TaskFilter
@@ -66,7 +66,7 @@ class TasksDeleteView(
     template_name = 'tasks/task_delete.html'
     author_message = _('The task can be deleted only by its author')
     author_url = reverse_lazy('tasks_index')
-    permission_denied_url = reverse_lazy("task_index")
+    permission_denied_url = reverse_lazy("tasks_index")
     permission_denied_message = _("Only the author of the task can delete it")
     extra_context = {
         "title": _("Delete task"),

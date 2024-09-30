@@ -312,7 +312,7 @@ msgstr "Пользователь успешно изменен"
 
 #: task_manager/users/views.py:47 task_manager/users/views.py:77
 msgid "You don't have rights to update other users."
-msgstr "У вас нет прав на обновление других пользователей."
+msgstr "У вас нет прав для изменения другого пользователя."
 
 #: task_manager/users/views.py:50
 msgid "Updating user"
