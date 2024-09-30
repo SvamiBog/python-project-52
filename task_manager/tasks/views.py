@@ -69,7 +69,8 @@ class TasksDeleteView(
     author_url = reverse_lazy('tasks_index')
     extra_context = {
         "title": _("Delete task"),
-        "button_text": _("Delete"),
+        'text': _('Are you sure you want to delete'),
+        "button_text": _('Yes, delete'),
     }
 
 

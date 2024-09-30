@@ -56,5 +56,6 @@ class StatusDeleteView(
     protected_url = reverse_lazy('status_index')
     extra_context = {
         'title': _('Delete Status'),
-        'button_text': _('Delete'),
+        'text': _('Are you sure you want to delete'),
+        'button_text': _('Yes, delete'),
     }

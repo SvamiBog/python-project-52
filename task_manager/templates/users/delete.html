@@ -10,7 +10,7 @@
         <form method="post">
             {% csrf_token %}
             {% bootstrap_form form %}
-            <input class="btn btn-danger" type="submit" value="{{ button_text }}">
+            {% bootstrap_button  button_text button_type="submit" button_class="btn btn-danger" %}
         </form>
     </div>
 {% endblock %}
