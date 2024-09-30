@@ -7,7 +7,7 @@ class Label(models.Model):
         max_length=150,
         unique=True,
         verbose_name=_('Name'),
-        blank=True,
+        blank=False,
     )
     created_at = models.DateTimeField(
         auto_now_add=True,
