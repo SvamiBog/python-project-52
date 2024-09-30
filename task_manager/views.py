@@ -13,7 +13,7 @@ class IndexView(TemplateView):
         'title': _('Greetings from Hexlet!'),
         'text': _('Practical programming courses'),
         'button_text': _('Learn more')
-        }
+    }
 
 
 class UserLoginView(SuccessMessageMixin, LoginView):
