@@ -1,6 +1,7 @@
 from task_manager.labels.models import Label
 from task_manager.tests.base_test_case import BaseCRUDTestCase
 
+
 class LabelsCRUDTests(BaseCRUDTestCase):
     def setUp(self):
         super().setUp()

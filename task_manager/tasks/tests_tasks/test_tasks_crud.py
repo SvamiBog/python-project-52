@@ -10,7 +10,7 @@ class TasksCRUDTests(BaseCRUDTestCase):
     def setUp(self):
         super().setUp()
         self.status = Status.objects.create(name='New')
-        self.new_status = Status.objects.create(name='Updated Status')  # Создаем новый статус для теста обновления
+        self.new_status = Status.objects.create(name='Updated Status')
         self.other_user = User.objects.create_user(username='otheruser', password='password')
         self.task_data = {
             'name': 'Test Task',

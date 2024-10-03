@@ -7,13 +7,20 @@ from task_manager.tests.base_test_case import BaseCRUDTestCase
 
 User = get_user_model()
 
+
 class TaskFilterTests(BaseCRUDTestCase):
 
     def setUp(self):
         """Set up test data for tasks, users, statuses, and labels."""
-        super().setUp()  # Используем setup родительского класса для создания пользователя
-        self.executor = User.objects.create_user(username="executor", password="password123")
-        self.another_user = User.objects.create_user(username="another_user", password="password123")
+        super().setUp()
+        self.executor = User.objects.create_user(
+            username="executor",
+            password="password123"
+        )
+        self.another_user = User.objects.create_user(
+            username="another_user",
+            password="password123"
+        )
 
         # Создаем статусы
         self.status_open = Status.objects.create(name="Open")

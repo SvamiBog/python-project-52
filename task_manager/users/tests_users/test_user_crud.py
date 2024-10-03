@@ -6,6 +6,7 @@ from task_manager.tests.base_test_case import BaseCRUDTestCase
 
 User = get_user_model()
 
+
 class UserCRUDTests(BaseCRUDTestCase):
 
     def setUp(self):

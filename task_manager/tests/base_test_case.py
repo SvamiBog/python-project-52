@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
+
 class BaseCRUDTestCase(TestCase):
     def setUp(self):
         """Set up common user data and login for all CRUD tests."""
