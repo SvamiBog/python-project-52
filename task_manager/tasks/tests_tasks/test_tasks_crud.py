@@ -6,7 +6,6 @@ from task_manager.tasks.models import Task
 
 User = get_user_model()
 
-
 class TasksCRUDTests(TestCase):
 
     def setUp(self):
@@ -16,14 +15,16 @@ class TasksCRUDTests(TestCase):
         self.status = self.create_status('New')
         self.client.login(username='testuser', password='password')
 
+        # Task data
+        self.task_data = {
+            'name': 'Test Task',
+            'description': 'Test Description',
+            'author': self.user,
+            'status': self.status,
+            'executor': self.other_user
+        }
         # Create a task for testing
-        self.task = self.create_task(
-            name='Test Task',
-            description='Test Description',
-            author=self.user,
-            status=self.status,
-            executor=self.other_user
-        )
+        self.task = self.create_task(self.task_data)
 
     def create_user(self, username, password):
         """Create and return a user."""
@@ -33,14 +34,14 @@ class TasksCRUDTests(TestCase):
         """Create and return a status."""
         return Status.objects.create(name=name)
 
-    def create_task(self, name, description, author, status, executor):
-        """Create and return a task."""
+    def create_task(self, task_data):
+        """Create and return a task using task_data dictionary."""
         return Task.objects.create(
-            name=name,
-            description=description,
-            author=author,
-            status=status,
-            executor=executor
+            name=task_data['name'],
+            description=task_data['description'],
+            author=task_data['author'],
+            status=task_data['status'],
+            executor=task_data['executor']
         )
 
     def test_task_create(self):
@@ -69,23 +70,24 @@ class TasksCRUDTests(TestCase):
 
     def test_task_update(self):
         """Test updating an existing task."""
-        response = self.client.post(reverse(
-            'task_update',
-            args=[self.task.id]
-        ), {
+        updated_data = {
             'name': 'Updated Task',
             'description': 'Updated Description',
             'status': self.status.id,
             'executor': self.other_user.id
-        })
+        }
+        response = self.client.post(reverse(
+            'task_update',
+            args=[self.task.id]
+        ), updated_data)
         # Check for successful redirect after update
         self.assertEqual(response.status_code, 302)
         # Refresh task data from the database
         self.task.refresh_from_db()
         # Verify the task name was updated
-        self.assertEqual(self.task.name, 'Updated Task')
+        self.assertEqual(self.task.name, updated_data['name'])
         # Verify the task description was updated
-        self.assertEqual(self.task.description, 'Updated Description')
+        self.assertEqual(self.task.description, updated_data['description'])
 
     def test_task_delete(self):
         """Test deleting a task."""
