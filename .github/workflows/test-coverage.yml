@@ -1,16 +1,15 @@
-name: Django CI
+name: CI
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   pull_request:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
   test:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -18,25 +17,13 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.12'
+          python-version: '3.10'
+
+      - name: Install Poetry
+        run: curl -sSL https://install.python-poetry.org | python3 -
 
       - name: Install dependencies
-        run: |
-          python -m venv venv
-          source venv/bin/activate
-          pip install -r requirements.txt
-          pip install coverage codeclimate-test-reporter
+        run: poetry install
 
-      - name: Run tests with coverage
-        run: |
-          source venv/bin/activate
-          coverage run manage.py test
-          coverage report
-          coverage xml
-
-      - name: Upload coverage report to Code Climate
-        env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-        run: |
-          source venv/bin/activate
-          codeclimate-test-reporter < coverage.xml
+      - name: Run tests
+        run: poetry run pytest
