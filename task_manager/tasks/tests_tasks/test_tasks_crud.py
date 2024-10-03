@@ -6,6 +6,7 @@ from task_manager.tasks.models import Task
 
 User = get_user_model()
 
+
 class TasksCRUDTests(TestCase):
 
     def setUp(self):
