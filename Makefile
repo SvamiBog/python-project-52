@@ -26,4 +26,5 @@ dev:
 	poetry run python manage.py runserver
 
 test-coverage:
-	poetry run pytest --cov=gendiff --cov-report xml
+    coverage run --source='.' manage.py test && coverage xml
+
