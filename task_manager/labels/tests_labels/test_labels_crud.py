@@ -1,56 +1,23 @@
-from django.test import TestCase
-from django.urls import reverse
-from django.contrib.auth import get_user_model
 from task_manager.labels.models import Label
+from task_manager.tests.base_test_case import BaseCRUDTestCase
 
-User = get_user_model()
-
-
-class LabelsCRUDTests(TestCase):
+class LabelsCRUDTests(BaseCRUDTestCase):
     def setUp(self):
-        # Создание тестового пользователя и метки
-        self.user = User.objects.create_user(
-            username="testuser",
-            password="password123"
-        )
+        super().setUp()
         self.label = Label.objects.create(name="Test Label")
 
-        # Аутентификация пользователя
-        self.client.login(username="testuser", password="password123")
-
     def test_label_create(self):
-        """Тест создания метки."""
-        response = self.client.post(reverse('label_create'), {
-            'name': 'New Label'
-        })
-        self.assertEqual(response.status_code, 302)  # редирект после создания
-        self.assertTrue(Label.objects.filter(name='New Label').exists())
+        """Test creating a label."""
+        self.assert_create('label_create', Label, {'name': 'New Label'})
 
     def test_label_read(self):
-        """Тест отображения списка меток."""
-        response = self.client.get(reverse('labels_index'))
-        self.assertEqual(response.status_code, 200)
-        self.assertContains(response, self.label.name)
+        """Test reading label list."""
+        self.assert_read('labels_index', None, 'name')
 
     def test_label_update(self):
-        """Тест обновления метки."""
-        response = self.client.post(reverse(
-            'label_update',
-            args=[self.label.id]
-        ),
-            {'name': 'Updated Label'}
-        )
-        self.assertEqual(response.status_code, 302)
-        self.label.refresh_from_db()
-        self.assertEqual(self.label.name, 'Updated Label')
+        """Test updating a label."""
+        self.assert_update('label_update', self.label, {'name': 'Updated Label'})
 
     def test_label_delete(self):
-        """Тест удаления метки."""
-        response = self.client.post(
-            reverse(
-                'label_delete',
-                args=[self.label.id]
-            )
-        )
-        self.assertEqual(response.status_code, 302)
-        self.assertFalse(Label.objects.filter(id=self.label.id).exists())
+        """Test deleting a label."""
+        self.assert_delete('label_delete', Label, self.label.id)
