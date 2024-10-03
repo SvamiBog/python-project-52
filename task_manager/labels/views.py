@@ -7,7 +7,6 @@ from task_manager.mixins import AuthRequiredMixin, DeleteProtectionMixin
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 
-
 class LabelIndexView(AuthRequiredMixin, ListView):
     model = Label
     context_object_name = 'labels'

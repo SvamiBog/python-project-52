@@ -7,13 +7,20 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
+
 class TaskFilterTests(BaseCRUDTestCase):
 
     def setUp(self):
         """Set up test data for tasks, users, statuses, and labels."""
         super().setUp()
-        self.executor = User.objects.create_user(username="executor", password="password123")
-        self.another_user = User.objects.create_user(username="another_user", password="password123")
+        self.executor = User.objects.create_user(
+            username="executor",
+            password="password123"
+        )
+        self.another_user = User.objects.create_user(
+            username="another_user",
+            password="password123"
+        )
 
         # Create statuses
         self.status_open = Status.objects.create(name="Open")
