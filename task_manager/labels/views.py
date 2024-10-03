@@ -14,11 +14,14 @@ class LabelIndexView(AuthRequiredMixin, ListView):
     ordering = ['pk']
 
 
-class LabelCreateView(AuthRequiredMixin, SuccessMessageMixin, CreateView):
+class LabelFormBaseView(AuthRequiredMixin, SuccessMessageMixin):
     model = Label
     form_class = LabelForm
     template_name = 'form.html'
     success_url = reverse_lazy('labels_index')
+
+
+class LabelCreateView(LabelFormBaseView, CreateView):
     success_message = _('Successfully created label')
     extra_context = {
         'title': _('Create new label'),
@@ -26,11 +29,7 @@ class LabelCreateView(AuthRequiredMixin, SuccessMessageMixin, CreateView):
     }
 
 
-class LabelUpdateView(AuthRequiredMixin, SuccessMessageMixin, UpdateView):
-    model = Label
-    form_class = LabelForm
-    template_name = 'form.html'
-    success_url = reverse_lazy('labels_index')
+class LabelUpdateView(LabelFormBaseView, UpdateView):
     success_message = _('Successfully updated label')
     extra_context = {
         'title': _('Update label'),
