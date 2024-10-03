@@ -24,7 +24,3 @@ check: selfcheck test-coverage lint
 
 dev:
 	poetry run python manage.py runserver
-
-test-coverage:
-    coverage run --source='.' manage.py test && coverage xml
-
