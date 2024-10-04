@@ -19,7 +19,11 @@ class StatusCRUDTests(BaseCRUDTestCase):
 
     def test_update_status(self):
         """Test updating a status."""
-        self.assert_update('status_update', self.status, {'name': 'Updated Status'})
+        self.assert_update(
+            'status_update',
+            self.status,
+            {'name': 'Updated Status'}
+        )
 
     def test_delete_status(self):
         """Test deleting a status."""

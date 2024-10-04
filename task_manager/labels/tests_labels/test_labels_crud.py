@@ -17,7 +17,11 @@ class LabelsCRUDTests(BaseCRUDTestCase):
 
     def test_label_update(self):
         """Test updating a label."""
-        self.assert_update('label_update', self.label, {'name': 'Updated Label'})
+        self.assert_update(
+            'label_update',
+            self.label,
+            {'name': 'Updated Label'}
+        )
 
     def test_label_delete(self):
         """Test deleting a label."""

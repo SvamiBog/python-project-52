@@ -60,15 +60,29 @@ class TaskFilterTests(BaseCRUDTestCase):
 
     def test_filter_by_status(self):
         """Test filtering tasks by status."""
-        self.assert_task_filter('status', self.status_open.id, self.task1, self.task2)
+        self.assert_task_filter(
+            'status',
+            self.status_open.id,
+            self.task1,
+            self.task2
+        )
 
     def test_filter_by_executor(self):
         """Test filtering tasks by executor."""
-        self.assert_task_filter('executor', self.executor.id, self.task1, self.task2)
+        self.assert_task_filter(
+            'executor',
+            self.executor.id,
+            self.task1,
+            self.task2)
 
     def test_filter_by_label(self):
         """Test filtering tasks by label."""
-        self.assert_task_filter('labels', self.label_bug.id, self.task1, self.task2)
+        self.assert_task_filter(
+            'labels',
+            self.label_bug.id,
+            self.task1,
+            self.task2
+        )
 
     def test_filter_by_author(self):
         """Test filtering tasks by author (own tasks)."""

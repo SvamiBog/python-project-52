@@ -30,7 +30,10 @@ class BaseCRUDTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def assert_update(self, url_name, model_instance, updated_data):
-        response = self.client.post(reverse(url_name, args=[model_instance.pk]), updated_data)
+        response = self.client.post(
+            reverse(url_name, args=[model_instance.pk]),
+            updated_data
+        )
         self.assertEqual(response.status_code, 302)
         model_instance.refresh_from_db()
 
