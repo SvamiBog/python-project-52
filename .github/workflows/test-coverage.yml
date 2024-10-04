@@ -6,29 +6,48 @@ name: Test coverage
 on: push
 jobs:
   build:
-
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:12
+        env:
+          POSTGRES_USER: janedoe
+          POSTGRES_PASSWORD: mypassword
+          POSTGRES_DB: mydb
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     strategy:
       matrix:
-        python-version: ["3.11.9"]
+        python-version: ["3.12"]
 
     steps:
       - uses: actions/checkout@v4
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
+
       - name: Install dependencies
         run: |
           pip install poetry
           make install
+
       - name: Run linter
         run: make lint
-      - name: test coverage
+
+      - name: Wait for PostgreSQL to be ready
+        run: sleep 15
+
+      - name: Run tests and coverage
         uses: paambaati/codeclimate-action@v9.0.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
         with:
           coverageCommand: make test-coverage
           debug: true
